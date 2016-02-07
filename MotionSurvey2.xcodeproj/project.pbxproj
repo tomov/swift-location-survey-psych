@@ -14,6 +14,7 @@
 		A22A8E961C629CEC004872FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A22A8E941C629CEC004872FE /* LaunchScreen.storyboard */; };
 		A22A8EA11C629CEC004872FE /* MotionSurvey2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A8EA01C629CEC004872FE /* MotionSurvey2Tests.swift */; };
 		A22A8EAC1C629CEC004872FE /* MotionSurvey2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22A8EAB1C629CEC004872FE /* MotionSurvey2UITests.swift */; };
+		A2CD64BD1C66B57500612612 /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CD64BC1C66B57500612612 /* LocationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A22A8EA71C629CEC004872FE /* MotionSurvey2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotionSurvey2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22A8EAB1C629CEC004872FE /* MotionSurvey2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionSurvey2UITests.swift; sourceTree = "<group>"; };
 		A22A8EAD1C629CEC004872FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2CD64BC1C66B57500612612 /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				A22A8E8B1C629CEC004872FE /* AppDelegate.swift */,
+				A2CD64BC1C66B57500612612 /* LocationDelegate.swift */,
 				A22A8E8D1C629CEC004872FE /* ViewController.swift */,
 				A22A8E8F1C629CEC004872FE /* Main.storyboard */,
 				A22A8E921C629CEC004872FE /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2CD64BD1C66B57500612612 /* LocationDelegate.swift in Sources */,
 				A22A8E8E1C629CEC004872FE /* ViewController.swift in Sources */,
 				A22A8E8C1C629CEC004872FE /* AppDelegate.swift in Sources */,
 			);
@@ -489,6 +493,7 @@
 				A22A8EB21C629CEC004872FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A22A8EB31C629CEC004872FE /* Build configuration list for PBXNativeTarget "MotionSurvey2Tests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +502,7 @@
 				A22A8EB51C629CEC004872FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A22A8EB61C629CEC004872FE /* Build configuration list for PBXNativeTarget "MotionSurvey2UITests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +511,7 @@
 				A22A8EB81C629CEC004872FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

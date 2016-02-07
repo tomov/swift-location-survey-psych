@@ -17,23 +17,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXW-aB-eO4">
-                                <rect key="frame" x="14" y="147" width="252" height="88"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXW-aB-eO4">
+                                <rect key="frame" x="6" y="0.0" width="274" height="79"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqh-3I-rPp">
-                                <rect key="frame" x="66" y="259" width="115" height="30"/>
+                                <rect key="frame" x="57" y="129" width="115" height="30"/>
                                 <state key="normal" title="RequestLocation"/>
                                 <connections>
                                     <action selector="getFixPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aef-eN-1n6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMc-nj-oJD">
+                                <rect key="frame" x="6" y="156" width="97" height="30"/>
+                                <state key="normal" title="start updating"/>
+                                <connections>
+                                    <action selector="startUpdatingLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vw8-Oz-6aY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5SW-H1-IAP">
+                                <rect key="frame" x="16" y="189" width="95" height="30"/>
+                                <state key="normal" title="stop updating"/>
+                                <connections>
+                                    <action selector="StopUpdatingLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9HZ-XX-nBI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaI-qb-Jkx">
+                                <rect key="frame" x="33" y="222" width="110" height="30"/>
+                                <state key="normal" title="start monitoring"/>
+                                <connections>
+                                    <action selector="startMonitoringSignificantChanges:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiw-Tg-zpa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x94-qR-qUm">
+                                <rect key="frame" x="33" y="260" width="108" height="30"/>
+                                <state key="normal" title="stop monitoring"/>
+                                <connections>
+                                    <action selector="stopMonitoringSignificantChanges:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Tw-I3-ngT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="actionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjY-PO-gc9">
+                                <rect key="frame" x="6" y="304" width="216" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="geoLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-U4-fye">
+                                <rect key="frame" x="6" y="60" width="274" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umN-zf-vnL">
+                                <rect key="frame" x="57" y="369" width="27" height="30"/>
+                                <state key="normal" title="geo"/>
+                                <connections>
+                                    <action selector="reverseGeoCode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8pz-L5-zhD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="actionLabel" destination="VjY-PO-gc9" id="LdL-lN-4lA"/>
+                        <outlet property="geoLabel" destination="OmK-U4-fye" id="0KG-ek-iY3"/>
                         <outlet property="locationLabel" destination="tXW-aB-eO4" id="jim-JE-Jod"/>
                     </connections>
                 </viewController>
