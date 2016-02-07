@@ -109,6 +109,36 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         modeString = mode.rawValue
     }
     
+    func postToRESTAPI() {
+        let endpoint: String = "http://localhost:5000/add_data"
+        guard let url = NSURL(string: endpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = NSMutableURLRequest(URL: url)
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        urlRequest.HTTPMethod = "POST"
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        
+        let data: NSDictionary = ["wtsafd": "asfddsf", "bla": "isaisaidf", "userId": 1]
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: [])
+            urlRequest.HTTPBody = jsonData
+        } catch {
+            print ("ERROR: cannot create JSON")
+        }
+        
+        let task = session.dataTaskWithRequest(urlRequest, completionHandler: { (data, response, error) in
+            print("GOT RESPONSE!!!")
+            print("data = \(data)")
+            print("response = \(response)")
+            print("error = \(error)")
+        })
+        task.resume()
+    }
+    
     // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

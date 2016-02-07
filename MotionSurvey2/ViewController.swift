@@ -46,6 +46,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func postToRest(sender: AnyObject) {
+        LocationDelegate.sharedInstance.postToRESTAPI()
+    }
+    
     @IBAction func reverseGeoCode(sender: AnyObject) {
         LocationDelegate.sharedInstance.computeAddress()
     }

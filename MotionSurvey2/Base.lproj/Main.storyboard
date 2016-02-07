@@ -77,6 +77,13 @@
                                     <action selector="reverseGeoCode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8pz-L5-zhD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7i-aB-mtO">
+                                <rect key="frame" x="19" y="396" width="89" height="30"/>
+                                <state key="normal" title="post to REST"/>
+                                <connections>
+                                    <action selector="postToRest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S7D-Fz-D4F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
