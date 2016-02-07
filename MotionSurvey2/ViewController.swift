@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func postToRest(sender: AnyObject) {
-        LocationDelegate.sharedInstance.postToRESTAPI()
+        LocationDelegate.sharedInstance.postToRESTAPI(["asdfasdf": "3123sdf", "sdfs": 1, "sdfsdf": "wtf"])
     }
     
     @IBAction func reverseGeoCode(sender: AnyObject) {

@@ -68,7 +68,7 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
             
             if let myPlacemet = myPlacements?.first
             {
-                self.address = "\(myPlacemet.locality!) \(myPlacemet.country!) \(myPlacemet.postalCode!)"
+                self.address = "\(myPlacemet.locality!) \(myPlacemet.addressDictionary!) \(myPlacemet.country!) \(myPlacemet.postalCode!)"
                 print(self.address)
             }
         }
@@ -80,7 +80,7 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         }
         // foreground only -- receive updates every X meters
         //
-        locMgr.distanceFilter = 20 // meters
+        locMgr.distanceFilter = 100 // meters
         locMgr.startUpdatingLocation()
         mode = Mode.UPDATING
         modeString = mode.rawValue
@@ -109,8 +109,9 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         modeString = mode.rawValue
     }
     
-    func postToRESTAPI() {
-        let endpoint: String = "http://localhost:5000/add_data"
+    func postToRESTAPI(dataDict: NSDictionary) {
+        let endpoint: String = "http://localhost:5000/add_data" // for local testing
+        //let endpoint: String = "https://blooming-wave-72684.herokuapp.com/add_data" // for prod
         guard let url = NSURL(string: endpoint) else {
             print("Error: cannot create URL")
             return
@@ -122,10 +123,9 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: config)
         
-        let data: NSDictionary = ["wtsafd": "asfddsf", "bla": "isaisaidf", "userId": 1]
         do {
-            let jsonData = try NSJSONSerialization.dataWithJSONObject(data, options: [])
-            urlRequest.HTTPBody = jsonData
+            let dataJson = try NSJSONSerialization.dataWithJSONObject(dataDict, options: [])
+            urlRequest.HTTPBody = dataJson
         } catch {
             print ("ERROR: cannot create JSON")
         }
@@ -144,11 +144,13 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // list of latest locations
         //
-        //dispatch_async(dispatch_get_main_queue()) {
         print(locations)
         location = locations[0]
-       // self.locationLabel.text = "\(locations[0])" // setup KeyValueObserving thing in view controller
-        //}
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) { // TODO isn't this a bg thread already?
+            print("dispatch bitch")
+            self.postToRESTAPI(["location": "\(self.location)"])
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
