@@ -68,7 +68,7 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
             
             if let myPlacemet = myPlacements?.first
             {
-                self.address = "\(myPlacemet.locality!) \(myPlacemet.addressDictionary!) \(myPlacemet.country!) \(myPlacemet.postalCode!)"
+                self.address = "\(myPlacemet.locality!) \(myPlacemet.country!) \(myPlacemet.postalCode!) \(myPlacemet.addressDictionary!)"
                 print(self.address)
             }
         }
@@ -80,7 +80,7 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         }
         // foreground only -- receive updates every X meters
         //
-        locMgr.distanceFilter = 100 // meters
+        locMgr.distanceFilter = 20 // meters
         locMgr.startUpdatingLocation()
         mode = Mode.UPDATING
         modeString = mode.rawValue
@@ -110,8 +110,8 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
     }
     
     func postToRESTAPI(dataDict: NSDictionary) {
-        let endpoint: String = "http://localhost:5000/add_data" // for local testing
-        //let endpoint: String = "https://blooming-wave-72684.herokuapp.com/add_data" // for prod
+        //let endpoint: String = "http://localhost:5000/add_data" // for local testing
+        let endpoint: String = "https://blooming-wave-72684.herokuapp.com/add_data" // for prod
         guard let url = NSURL(string: endpoint) else {
             print("Error: cannot create URL")
             return
@@ -147,9 +147,22 @@ class LocationDelegate: NSObject /*for @objc*/, CLLocationManagerDelegate {
         print(locations)
         location = locations[0]
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        // Push location to REST API
+        //
         dispatch_async(dispatch_get_global_queue(priority, 0)) { // TODO isn't this a bg thread already?
             print("dispatch bitch")
             self.postToRESTAPI(["location": "\(self.location)"])
+        }
+        // Try to push geo info to REST API too
+        //
+        geo.reverseGeocodeLocation(location) { (myPlacements, error) -> Void in
+            if error != nil {
+                print("error posting geo: \(error)")
+            }
+            if let myPlacemet = myPlacements?.first
+            {
+                self.postToRESTAPI(["location": "\(myPlacemet.addressDictionary!)"])
+            }
         }
     }
     
